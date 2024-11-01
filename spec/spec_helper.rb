@@ -1,9 +1,11 @@
-# spec/spec_helper.rb
-require "bundler/setup"
+# frozen_string_literal: true
+
 require "oasis-etm"
+require "nokogiri"
+require "xml-c14n"
 
 # Require all support files
-Dir[File.join(__dir__, "support", "**", "*.rb")].sort.each { |f| require f }
+Dir[File.join(__dir__, "support", "**", "*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -15,4 +17,15 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+end
+
+require "lutaml/model"
+require "lutaml/model/xml_adapter/nokogiri_adapter"
+require "lutaml/model/json_adapter/standard_json_adapter"
+require "lutaml/model/yaml_adapter/standard_yaml_adapter"
+
+Lutaml::Model::Config.configure do |config|
+  config.xml_adapter = Lutaml::Model::XmlAdapter::NokogiriAdapter
+  config.json_adapter = Lutaml::Model::JsonAdapter::StandardJsonAdapter
+  config.yaml_adapter = Lutaml::Model::YamlAdapter::StandardYamlAdapter
 end

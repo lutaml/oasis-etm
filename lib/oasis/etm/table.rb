@@ -14,7 +14,7 @@ module Oasis
       attribute :tgroups, Tgroup, collection: true
 
       xml do
-        root "table"
+        root "table", ordered: true
 
         # Frame mappings
         map_attribute "frame", to: :frame

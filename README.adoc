@@ -1,16 +1,35 @@
-= OASIS Exchange Table Model library
+= OASIS Exchange Table Model (ETM) Parser
+:toc: macro
+:toclevels: 3
 
-https://github.com/lutaml/oasis-etm[image:https://img.shields.io/github/stars/lutaml/oasis-etm.svg?style=social[GitHub Stars]]
-https://github.com/lutaml/oasis-etm[image:https://img.shields.io/github/forks/lutaml/oasis-etm.svg?style=social[GitHub Forks]]
-image:https://img.shields.io/github/license/lutaml/oasis-etm.svg[License]
-image:https://img.shields.io/github/actions/workflow/status/lutaml/oasis-etm/test.yml?branch=main[Build Status]
-image:https://img.shields.io/gem/v/oasis-etm.svg[RubyGems Version]
+image:https://img.shields.io/gem/v/oasis-etm.svg[Gem Version, link=https://rubygems.org/gems/oasis-etm]
+image:https://github.com/yourusername/oasis-etm/actions/workflows/test.yml/badge.svg[Build Status, link=https://github.com/yourusername/oasis-etm/actions/workflows/test.yml]
+image:https://img.shields.io/github/license/yourusername/oasis-etm.svg[License, link=https://github.com/yourusername/oasis-etm/blob/main/LICENSE]
+
+toc::[]
 
 == Purpose
 
+The OASIS ETM format is a simple XML format for representing tables for
+exchange. It is used in the DocBook and NISO JATS standards.
+
+This library provides a Ruby implementation of the
+https://www.oasis-open.org/specs/a503.htm[OASIS Technical Resolution TR 9503:1995].
 
 == Features
 
+* Full implementation of the OASIS Exchange Table Model TR 9503:1995
+* Intentionally excludes CALS table features not part of the Exchange subset (like `tfoot`)
+* XML serialization and deserialization
+* Validation of attribute values
+* Support for all Exchange Table Model elements:
+** `table`
+** `tgroup`
+** `colspec`
+** `thead`
+** `tbody`
+** `row`
+** `entry`
 
 == Installation
 
@@ -35,49 +54,10 @@ Or install it yourself as:
 gem install oasis-etm
 ----
 
-= OASIS Exchange Table Model (ETM) Parser
-:source-highlighter: rouge
-:toc: macro
-:toclevels: 3
-
-image:https://img.shields.io/gem/v/oasis-etm.svg[Gem Version, link=https://rubygems.org/gems/oasis-etm]
-image:https://github.com/yourusername/oasis-etm/actions/workflows/test.yml/badge.svg[Build Status, link=https://github.com/yourusername/oasis-etm/actions/workflows/test.yml]
-image:https://img.shields.io/github/license/yourusername/oasis-etm.svg[License, link=https://github.com/yourusername/oasis-etm/blob/main/LICENSE]
-
-toc::[]
-
-== Purpose
-
-Ruby library to parse and create OASIS Exchange Table Model (ETM) formatted tables.
-This library provides a Ruby implementation of the OASIS Technical Resolution TR 9503:1995.
-
-== Installation
-
-Add this line to your application's Gemfile:
-
-[source,ruby]
-----
-gem 'oasis-etm'
-----
-
-And then execute:
-
-[source,sh]
-----
-$ bundle install
-----
-
-Or install it yourself as:
-
-[source,sh]
-----
-$ gem install oasis-etm
-----
-
 
 == Usage
 
-=== Basic Example
+=== Basic example
 
 [source,ruby]
 ----
@@ -119,7 +99,7 @@ table = Oasis::Etm::Table.new(
 xml = table.to_xml
 ----
 
-=== XML Schema
+=== XML schema
 
 The OASIS ETM format follows this basic structure:
 
@@ -148,6 +128,24 @@ The OASIS ETM format follows this basic structure:
   </tgroup>
 </table>
 ----
+
+== Development
+
+=== Test files
+
+`spec/fixtures/native/docbook_example.xml`::
+https://tdg.docbook.org/tdg/4.5/table
+
+`spec/fixtures/niso-jats/niso-jats-table-wrap.xml`::
+https://jats.nlm.nih.gov/options/OASIS/tag-library/19990315/element/oasis-table.html
+This is to test the OASIS exchange table model when it is namespaced from
+another location.
+
+`spec/fixtures/isosts/isosts_tables.cals.{nn}.xml`::
+Tables extracted from https://www.iso.org/schema/isosts/cals/test/isosts_tables.cals.xml.
+This is to test the OASIS exchange table model when it is namespaced from
+another location.
+
 
 == Contributing
 

@@ -14,7 +14,7 @@ module Oasis
       attribute :valign, :string, values: %w[top middle bottom]
 
       # Content
-      attribute :content, :string
+      attribute :content, :string, raw: true
 
       xml do
         root "entry"

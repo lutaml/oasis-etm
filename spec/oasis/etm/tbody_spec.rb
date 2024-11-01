@@ -42,7 +42,7 @@ RSpec.describe Oasis::Etm::Tbody do
     end
 
     it "generates valid XML" do
-      expect(tbody.to_xml).to be_equivalent_to(xml)
+      expect(tbody.to_xml).to be_analogous_with(xml)
     end
   end
 end

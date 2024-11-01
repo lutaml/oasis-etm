@@ -43,7 +43,7 @@ RSpec.describe Oasis::Etm::Colspec do
     end
 
     it "generates valid XML" do
-      expect(colspec.to_xml).to be_equivalent_to(xml)
+      expect(colspec.to_xml).to be_analogous_with(xml)
     end
   end
 end

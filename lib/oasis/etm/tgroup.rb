@@ -19,7 +19,7 @@ module Oasis
       attribute :tbody, Tbody
 
       xml do
-        root "tgroup"
+        root "tgroup", ordered: true
 
         # Attribute mappings
         map_attribute "cols", to: :cols

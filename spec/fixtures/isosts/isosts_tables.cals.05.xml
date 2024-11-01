@@ -1,0 +1,63 @@
+                <oasis:table frame="all" colsep="yes" rowsep="yes" xmlns:oasis="-//OASIS//DTD XML Exchange Table Model 19990315//EN">
+                    <oasis:tgroup cols="6">
+
+                        <oasis:colspec colnum="1" colname="col1" align="center" colwidth="35.50"/>
+                        <oasis:colspec colnum="2" colname="col2" align="left" colwidth="22.05"/>
+                        <oasis:colspec colnum="3" colname="col3" align="left" colwidth="283.95"/>
+                        <oasis:colspec colnum="4" colname="col4" align="center" colwidth="47.00"/>
+                        <oasis:colspec colnum="5" colname="col5" align="center" colwidth="47.00"/>
+                        <oasis:colspec colnum="6" colname="col6" align="center" colwidth="52.50"/>
+
+                        <oasis:thead>
+                            <oasis:row>
+                                <oasis:entry valign="middle" namest="col1" nameend="col1" colsep="yes" rowsep="yes">header text</oasis:entry>
+                                <oasis:entry valign="middle" align="center" namest="col2" nameend="col3" colsep="yes" rowsep="yes">header text</oasis:entry>
+                                <oasis:entry valign="middle" namest="col4" nameend="col4" colsep="yes" rowsep="yes">header text</oasis:entry>
+                                <oasis:entry valign="middle" namest="col5" nameend="col5" colsep="yes" rowsep="yes">header text</oasis:entry>
+                                <oasis:entry valign="middle" namest="col6" nameend="col6" colsep="yes" rowsep="yes">header text</oasis:entry>
+                            </oasis:row>
+                        </oasis:thead>
+                        <oasis:tbody>
+                            <oasis:row>
+                                <oasis:entry valign="top" morerows="9" namest="col1" nameend="col1" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col2" nameend="col3" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col4" nameend="col4" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col5" nameend="col5" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col6" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col3" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col4" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col3" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col4" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col3" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" align="left" namest="col4" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col3" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" align="left" namest="col4" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" align="center" namest="col2" nameend="col2" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col3" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry valign="top" namest="col2" nameend="col2" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                                <oasis:entry valign="top" namest="col3" nameend="col6" colsep="yes" rowsep="yes">table cell text</oasis:entry>
+                            </oasis:row>
+                        </oasis:tbody>
+                    </oasis:tgroup>
+                </oasis:table>
