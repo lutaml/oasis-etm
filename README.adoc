@@ -1,0 +1,168 @@
+= OASIS Exchange Table Model library
+
+https://github.com/lutaml/oasis-etm[image:https://img.shields.io/github/stars/lutaml/oasis-etm.svg?style=social[GitHub Stars]]
+https://github.com/lutaml/oasis-etm[image:https://img.shields.io/github/forks/lutaml/oasis-etm.svg?style=social[GitHub Forks]]
+image:https://img.shields.io/github/license/lutaml/oasis-etm.svg[License]
+image:https://img.shields.io/github/actions/workflow/status/lutaml/oasis-etm/test.yml?branch=main[Build Status]
+image:https://img.shields.io/gem/v/oasis-etm.svg[RubyGems Version]
+
+== Purpose
+
+
+== Features
+
+
+== Installation
+
+Add this line to your application's Gemfile:
+
+[source,ruby]
+----
+gem 'oasis-etm'
+----
+
+And then execute:
+
+[source,shell]
+----
+bundle install
+----
+
+Or install it yourself as:
+
+[source,shell]
+----
+gem install oasis-etm
+----
+
+= OASIS Exchange Table Model (ETM) Parser
+:source-highlighter: rouge
+:toc: macro
+:toclevels: 3
+
+image:https://img.shields.io/gem/v/oasis-etm.svg[Gem Version, link=https://rubygems.org/gems/oasis-etm]
+image:https://github.com/yourusername/oasis-etm/actions/workflows/test.yml/badge.svg[Build Status, link=https://github.com/yourusername/oasis-etm/actions/workflows/test.yml]
+image:https://img.shields.io/github/license/yourusername/oasis-etm.svg[License, link=https://github.com/yourusername/oasis-etm/blob/main/LICENSE]
+
+toc::[]
+
+== Purpose
+
+Ruby library to parse and create OASIS Exchange Table Model (ETM) formatted tables.
+This library provides a Ruby implementation of the OASIS Technical Resolution TR 9503:1995.
+
+== Installation
+
+Add this line to your application's Gemfile:
+
+[source,ruby]
+----
+gem 'oasis-etm'
+----
+
+And then execute:
+
+[source,sh]
+----
+$ bundle install
+----
+
+Or install it yourself as:
+
+[source,sh]
+----
+$ gem install oasis-etm
+----
+
+
+== Usage
+
+=== Basic Example
+
+[source,ruby]
+----
+require 'oasis-etm'
+
+# Parse an ETM XML file
+table = Oasis::Etm::Table.from_xml(File.read('table.xml'))
+
+# Access table attributes
+puts table.frame
+puts table.colsep
+puts table.rowsep
+
+# Access table content
+table.tgroups.each do |tgroup|
+  tgroup.colspecs.each do |colspec|
+    puts "Column #{colspec.colnum}: #{colspec.colwidth}"
+  end
+end
+
+# Create a new table
+table = Oasis::Etm::Table.new(
+  frame: 'all',
+  colsep: 1,
+  rowsep: 1,
+  tgroups: [
+    Oasis::Etm::Tgroup.new(
+      cols: 3,
+      colspecs: [
+        Oasis::Etm::Colspec.new(colnum: 1, colwidth: '1*'),
+        Oasis::Etm::Colspec.new(colnum: 2, colwidth: '2*'),
+        Oasis::Etm::Colspec.new(colnum: 3, colwidth: '1*')
+      ]
+    )
+  ]
+)
+
+# Convert to XML
+xml = table.to_xml
+----
+
+=== XML Schema
+
+The OASIS ETM format follows this basic structure:
+
+[source,xml]
+----
+<table frame="all" colsep="1" rowsep="1">
+  <title>Sample Table</title>
+  <tgroup cols="3">
+    <colspec colnum="1" colwidth="1*"/>
+    <colspec colnum="2" colwidth="2*"/>
+    <colspec colnum="3" colwidth="1*"/>
+    <thead>
+      <row>
+        <entry>Header 1</entry>
+        <entry>Header 2</entry>
+        <entry>Header 3</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry>Cell 1</entry>
+        <entry>Cell 2</entry>
+        <entry>Cell 3</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</table>
+----
+
+== Contributing
+
+Bug reports and pull requests are welcome. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the code of conduct.
+
+. Fork it
+. Create your feature branch (`git checkout -b my-new-feature`)
+. Commit your changes (`git commit -am 'Add some feature'`)
+. Push to the branch (`git push origin my-new-feature`)
+. Create new Pull Request
+
+
+== License and Copyright
+
+This project is licensed under the BSD 2-clause License.
+See the link:LICENSE.md[] file for details.
+
+Copyright Ribose.
