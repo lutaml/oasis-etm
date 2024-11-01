@@ -4,16 +4,16 @@ RSpec.shared_examples "validates attributes" do |attributes|
     context "with #{attribute}" do
       it "accepts valid values" do
         valid_values.each do |value|
-          expect {
+          expect do
             described_class.new(attribute => value)
-          }.not_to raise_error
+          end.not_to raise_error
         end
       end
 
       it "rejects invalid values" do
-        expect {
+        expect do
           described_class.new(attribute => "invalid")
-        }.to raise_error(Lutaml::Model::ValidationError)
+        end.to raise_error(Lutaml::Model::ValidationError)
       end
     end
   end

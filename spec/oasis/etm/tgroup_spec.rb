@@ -91,7 +91,7 @@ RSpec.describe Oasis::Etm::Tgroup do
     end
 
     it "generates valid XML" do
-      expect(tgroup.to_xml).to be_equivalent_to(xml)
+      expect(tgroup.to_xml).to be_analogous_with(xml)
     end
   end
 end

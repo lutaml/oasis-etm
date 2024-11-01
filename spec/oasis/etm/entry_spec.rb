@@ -1,3 +1,4 @@
+# spec/oasis/etm/entry_spec.rb
 RSpec.describe Oasis::Etm::Entry do
   let(:xml) do
     <<~XML
@@ -54,33 +55,49 @@ RSpec.describe Oasis::Etm::Entry do
     end
 
     it "generates valid XML" do
-      expect(entry.to_xml).to be_equivalent_to(xml)
+      expect(entry.to_xml).to be_analogous_with(xml)
     end
   end
 
   context "with validation" do
     it "validates align values" do
-      expect {
-        described_class.new(align: "invalid")
-      }.to raise_error(Lutaml::Model::ValidationError)
+      entry = described_class.new(align: "invalid")
+      errors = entry.validate
+      expect(errors).to match_array(
+        have_attributes(
+          message: /align is `invalid`, must be one of the following \[left, right, center, justify, char\]/,
+        ),
+      )
     end
 
     it "validates valign values" do
-      expect {
-        described_class.new(valign: "invalid")
-      }.to raise_error(Lutaml::Model::ValidationError)
+      entry = described_class.new(valign: "invalid")
+      errors = entry.validate
+      expect(errors).to match_array(
+        have_attributes(
+          message: /valign is `invalid`, must be one of the following \[top, middle, bottom\]/,
+        ),
+      )
     end
 
     it "validates colsep values" do
-      expect {
-        described_class.new(colsep: 2)
-      }.to raise_error(Lutaml::Model::ValidationError)
+      entry = described_class.new(colsep: 2)
+      errors = entry.validate
+      expect(errors).to match_array(
+        have_attributes(
+          message: /colsep is `2`, must be one of the following \[0, 1\]/,
+        ),
+      )
     end
 
     it "validates rowsep values" do
-      expect {
-        described_class.new(rowsep: 2)
-      }.to raise_error(Lutaml::Model::ValidationError)
+      entry = described_class.new(rowsep: 2)
+      errors = entry.validate
+      expect(errors).to match_array(
+        have_attributes(
+          message: /rowsep is `2`, must be one of the following \[0, 1\]/,
+        ),
+      )
     end
   end
 end

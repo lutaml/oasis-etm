@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+                <oasis:table frame="none" colsep="no" rowsep="no"  xmlns:oasis="-//OASIS//DTD XML Exchange Table Model 19990315//EN">
+                    <oasis:tgroup cols="2">
+                        <oasis:tbody>
+                            <oasis:row>
+                                <oasis:entry namest="col1" nameend="col1">table cell text</oasis:entry>
+                                <oasis:entry namest="col2" nameend="col2">table cell text</oasis:entry>
+                            </oasis:row>
+                            <oasis:row>
+                                <oasis:entry namest="col1" nameend="col1">table cell text</oasis:entry>
+                                <oasis:entry namest="col2" nameend="col2">table cell text</oasis:entry>
+                            </oasis:row>
+                        </oasis:tbody>
+                    </oasis:tgroup>
+                </oasis:table>

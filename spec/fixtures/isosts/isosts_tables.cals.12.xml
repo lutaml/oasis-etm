@@ -1,0 +1,22 @@
+                <oasis:table frame="all" colsep="yes" rowsep="yes" xmlns:oasis="-//OASIS//DTD XML Exchange Table Model 19990315//EN">
+                    <oasis:tgroup cols="6">
+                        <oasis:colspec colnum="1" colname="col1"/>
+                        <oasis:colspec colnum="2" colname="col2" align="left"/>
+                        <oasis:colspec colnum="3" colname="col3" char="char"/>
+                        <oasis:colspec colnum="4" colname="col4" charoff="charoff"/>
+                        <oasis:colspec colnum="5" colname="col5"/>
+                        <oasis:colspec colnum="6" colname="col6"/>
+                        <oasis:tbody>
+                            <oasis:row>
+                                <oasis:entry valign="top" align="left" char="char" charoff="charoff" namest="col1" nameend="col1" colsep="yes" rowsep="yes">just lots of text to see the vertical
+                                    alignment, just lots of text to see the vertical alignment, just lots of text to see the vertical alignment, just lots of text to see the vertical
+                                    alignment</oasis:entry>
+                                <oasis:entry valign="middle" align="center" namest="col2" nameend="col2" colsep="yes" rowsep="yes">align="center" valign="middle"</oasis:entry>
+                                <oasis:entry valign="top" align="left" namest="col3" nameend="col3" colsep="yes" rowsep="yes">align="left" valign="top"</oasis:entry>
+                                <oasis:entry valign="bottom" align="right" namest="col4" nameend="col4" colsep="yes" rowsep="yes">align="right" valign="bottom"</oasis:entry>
+                                <oasis:entry align="char" namest="col5" nameend="col5" colsep="yes" rowsep="yes">align="char"</oasis:entry>
+                                <oasis:entry valign="bottom" align="justify" namest="col6" nameend="col6" colsep="yes" rowsep="yes">align="justify" valign="bottom"</oasis:entry>
+                            </oasis:row>
+                        </oasis:tbody>
+                    </oasis:tgroup>
+                </oasis:table>
