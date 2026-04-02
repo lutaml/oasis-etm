@@ -1,6 +1,3 @@
-require_relative "colspec"
-require_relative "thead"
-require_relative "tbody"
 
 module Oasis
   module Etm
@@ -19,7 +16,9 @@ module Oasis
       attribute :tbody, Tbody
 
       xml do
-        root "tgroup", ordered: true
+        element "tgroup"
+        namespace Namespace
+        ordered
 
         # Attribute mappings
         map_attribute "cols", to: :cols

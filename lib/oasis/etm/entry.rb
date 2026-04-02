@@ -17,7 +17,9 @@ module Oasis
       attribute :content, :string, raw: true
 
       xml do
-        root "entry"
+        element "entry"
+        namespace Namespace
+        mixed_content
 
         # Attribute mappings
         map_attribute "colname", to: :colname

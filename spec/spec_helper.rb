@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "oasis-etm"
+require_relative "../lib/oasis-etm"
 require "nokogiri"
-require "xml-c14n"
+require "canon"
 
 # Require all support files
 Dir[File.join(__dir__, "support", "**", "*.rb")].each { |f| require f }
@@ -20,12 +20,6 @@ RSpec.configure do |config|
 end
 
 require "lutaml/model"
-require "lutaml/model/xml_adapter/nokogiri_adapter"
-require "lutaml/model/json_adapter/standard_json_adapter"
-require "lutaml/model/yaml_adapter/standard_yaml_adapter"
-
 Lutaml::Model::Config.configure do |config|
-  config.xml_adapter = Lutaml::Model::XmlAdapter::NokogiriAdapter
-  config.json_adapter = Lutaml::Model::JsonAdapter::StandardJsonAdapter
-  config.yaml_adapter = Lutaml::Model::YamlAdapter::StandardYamlAdapter
+  config.xml_adapter_type = :nokogiri
 end

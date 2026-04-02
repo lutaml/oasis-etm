@@ -12,7 +12,9 @@ module Oasis
       attribute :charoff, :string
 
       xml do
-        root "colspec"
+        element "colspec"
+        namespace Namespace
+        ordered
 
         map_attribute "colnum", to: :colnum
         map_attribute "colname", to: :colname

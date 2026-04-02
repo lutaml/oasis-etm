@@ -1,4 +1,3 @@
-require_relative "row"
 
 module Oasis
   module Etm
@@ -10,7 +9,8 @@ module Oasis
       attribute :rows, Row, collection: true
 
       xml do
-        root "thead"
+        element "thead"
+        namespace Namespace
 
         map_attribute "valign", to: :valign
         map_element "row", to: :rows

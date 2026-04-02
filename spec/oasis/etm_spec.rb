@@ -21,10 +21,7 @@ RSpec.describe Oasis::Etm do
               encoding: "utf-8",
             )
 
-            cleaned_xml_string = xml_string
-              .gsub(/^<\?xml.*\n/, "")
-
-            expect(generated).to be_analogous_with(cleaned_xml_string)
+            expect(generated).to be_xml_equivalent_to(xml_string)
           end
         end
       end
@@ -45,10 +42,7 @@ RSpec.describe Oasis::Etm do
               encoding: "utf-8",
             )
 
-            cleaned_xml_string = xml_string
-              .gsub(/^<\?xml.*\n/, "")
-
-            expect(generated).to be_analogous_with(cleaned_xml_string)
+            expect(generated).to be_xml_equivalent_to(xml_string)
           end
         end
       end
@@ -69,10 +63,7 @@ RSpec.describe Oasis::Etm do
               encoding: "utf-8",
             )
 
-            cleaned_xml_string = xml_string
-              .gsub(/^<\?xml.*\n/, "")
-
-            expect(generated).to be_analogous_with(cleaned_xml_string)
+            expect(generated).to be_xml_equivalent_to(xml_string)
           end
         end
       end

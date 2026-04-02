@@ -1,4 +1,3 @@
-require_relative "entry"
 
 module Oasis
   module Etm
@@ -11,7 +10,8 @@ module Oasis
       attribute :entries, Entry, collection: true
 
       xml do
-        root "row"
+        element "row"
+        namespace Namespace
 
         map_attribute "rowsep", to: :rowsep
         map_attribute "valign", to: :valign
