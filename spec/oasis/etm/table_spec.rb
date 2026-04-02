@@ -88,7 +88,7 @@ RSpec.describe Oasis::Etm::Table do
     end
 
     it "generates valid XML" do
-      expect(table.to_xml).to be_analogous_with(xml)
+      expect(table.to_xml).to be_xml_equivalent_to(xml)
     end
   end
 end

@@ -1,4 +1,3 @@
-require_relative "tgroup"
 
 module Oasis
   module Etm
@@ -14,7 +13,8 @@ module Oasis
       attribute :tgroups, Tgroup, collection: true
 
       xml do
-        root "table", ordered: true
+        element "table"
+        namespace Namespace, ordered: true
 
         # Frame mappings
         map_attribute "frame", to: :frame

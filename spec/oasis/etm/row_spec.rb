@@ -37,7 +37,7 @@ RSpec.describe Oasis::Etm::Row do
     end
 
     it "generates valid XML" do
-      expect(row.to_xml).to be_analogous_with(xml)
+      expect(row.to_xml).to be_xml_equivalent_to(xml)
     end
   end
 end
