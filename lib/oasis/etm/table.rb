@@ -1,12 +1,14 @@
-
 module Oasis
   module Etm
     class Table < Lutaml::Model::Serializable
       # Table attributes
+      # colsep/rowsep accept both integer (0/1) and string ("yes"/"no") values.
+      # The string form "yes"/"no" is a legacy SGML representation supported for
+      # backward compatibility with older Exchange Table Model documents.
       attribute :frame, :string, values: %w[top bottom topbot all sides none]
-      attribute :colsep, :integer, values: [0, 1]
-      attribute :rowsep, :integer, values: [0, 1]
-      attribute :pgwide, :integer, values: [0, 1]
+      attribute :colsep, :string, values: %w[0 1 yes no]
+      attribute :rowsep, :string, values: %w[0 1 yes no]
+      attribute :pgwide, :string, values: %w[0 1 yes no]
 
       # Table content
       attribute :title, :string
@@ -14,7 +16,8 @@ module Oasis
 
       xml do
         element "table"
-        namespace Namespace, ordered: true
+        namespace Namespace
+        ordered
 
         # Frame mappings
         map_attribute "frame", to: :frame

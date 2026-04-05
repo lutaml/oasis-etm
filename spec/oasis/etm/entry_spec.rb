@@ -2,7 +2,7 @@
 RSpec.describe Oasis::Etm::Entry do
   let(:xml) do
     <<~XML
-      <entry
+      <entry xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table"
         colname="col1"
         namest="col1"
         nameend="col2"
@@ -24,8 +24,8 @@ RSpec.describe Oasis::Etm::Entry do
       expect(entry.namest).to eq("col1")
       expect(entry.nameend).to eq("col2")
       expect(entry.morerows).to eq(1)
-      expect(entry.colsep).to eq(1)
-      expect(entry.rowsep).to eq(1)
+      expect(entry.colsep).to eq("1")
+      expect(entry.rowsep).to eq("1")
       expect(entry.align).to eq("center")
       expect(entry.char).to eq(".")
       expect(entry.charoff).to eq("50")
@@ -81,21 +81,21 @@ RSpec.describe Oasis::Etm::Entry do
     end
 
     it "validates colsep values" do
-      entry = described_class.new(colsep: 2)
+      entry = described_class.new(colsep: "2")
       errors = entry.validate
       expect(errors).to match_array(
         have_attributes(
-          message: /colsep is `2`, must be one of the following \[0, 1\]/,
+          message: /colsep is `2`, must be one of the following \[0, 1, yes, no\]/,
         ),
       )
     end
 
     it "validates rowsep values" do
-      entry = described_class.new(rowsep: 2)
+      entry = described_class.new(rowsep: "2")
       errors = entry.validate
       expect(errors).to match_array(
         have_attributes(
-          message: /rowsep is `2`, must be one of the following \[0, 1\]/,
+          message: /rowsep is `2`, must be one of the following \[0, 1, yes, no\]/,
         ),
       )
     end

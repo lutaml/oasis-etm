@@ -1,7 +1,7 @@
 RSpec.describe Oasis::Etm::Colspec do
   let(:xml) do
     <<~XML
-      <colspec
+      <colspec xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table"
         colnum="1"
         colname="col1"
         colwidth="1*"
@@ -20,8 +20,8 @@ RSpec.describe Oasis::Etm::Colspec do
       expect(colspec.colnum).to eq(1)
       expect(colspec.colname).to eq("col1")
       expect(colspec.colwidth).to eq("1*")
-      expect(colspec.colsep).to eq(1)
-      expect(colspec.rowsep).to eq(1)
+      expect(colspec.colsep).to eq("1")
+      expect(colspec.rowsep).to eq("1")
       expect(colspec.align).to eq("center")
       expect(colspec.char).to eq(".")
       expect(colspec.charoff).to eq("50")

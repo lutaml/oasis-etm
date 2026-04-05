@@ -5,7 +5,9 @@ require "nokogiri"
 require "canon"
 
 # Require all support files
-Dir[File.join(__dir__, "support", "**", "*.rb")].each { |f| require f }
+Dir[File.join(__dir__, "support", "**", "*.rb")].each do |f|
+  require f
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

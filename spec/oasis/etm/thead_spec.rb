@@ -1,7 +1,7 @@
 RSpec.describe Oasis::Etm::Thead do
   let(:xml) do
     <<~XML
-      <thead valign="middle">
+      <thead xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table" valign="middle">
         <row>
           <entry>Header 1</entry>
           <entry>Header 2</entry>

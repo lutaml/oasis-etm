@@ -1,4 +1,3 @@
-
 module Oasis
   module Etm
     class Thead < Lutaml::Model::Serializable

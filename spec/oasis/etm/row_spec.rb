@@ -1,7 +1,7 @@
 RSpec.describe Oasis::Etm::Row do
   let(:xml) do
     <<~XML
-      <row rowsep="1" valign="middle">
+      <row xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table" rowsep="1" valign="middle">
         <entry>Cell 1</entry>
         <entry>Cell 2</entry>
         <entry>Cell 3</entry>
@@ -13,7 +13,7 @@ RSpec.describe Oasis::Etm::Row do
     subject(:row) { described_class.from_xml(xml) }
 
     it "parses attributes" do
-      expect(row.rowsep).to eq(1)
+      expect(row.rowsep).to eq("1")
       expect(row.valign).to eq("middle")
     end
 
