@@ -129,22 +129,120 @@ The OASIS ETM format follows this basic structure:
 </table>
 ----
 
-== Development
+== Round-Trip Conversion Tests
 
-=== Test files
+The round-trip tests in `spec/oasis/etm_spec.rb` verify that XML files can be
+parsed into Ruby objects and then serialized back to XML without loss of
+semantic content. 
 
-`spec/fixtures/native/docbook_example.xml`::
-https://tdg.docbook.org/tdg/4.5/table
+NOTE: These tests use the https://github.com/lutaml/canon[Canon gem] for XML
+comparison with the `spec_friendly` profile, which ignores non-semantic
+differences like attribute ordering and formatting.
 
-`spec/fixtures/niso-jats/niso-jats-table-wrap.xml`::
-https://jats.nlm.nih.gov/options/OASIS/tag-library/19990315/element/oasis-table.html
-This is to test the OASIS exchange table model when it is namespaced from
-another location.
+=== Purpose
 
-`spec/fixtures/isosts/isosts_tables.cals.{nn}.xml`::
-Tables extracted from https://www.iso.org/schema/isosts/cals/test/isosts_tables.cals.xml.
-This is to test the OASIS exchange table model when it is namespaced from
-another location.
+Round-trip conversion testing ensures that:
+
+* The parser correctly interprets all supported XML elements and attributes
+* The serializer correctly produces XML that preserves semantic meaning
+* The model accurately represents the Exchange Table Model structure
+
+=== Test Fixtures and Sources
+
+The round-trip tests use real-world XML files from various standards:
+
+[cols="1,2,3",options="header"]
+|===
+|Fixture |Source |Purpose
+
+|`spec/fixtures/native/docbook_example.xml`
+|https://tdg.docbook.org/tdg/4.5/table[DocBook Table Specification]
+|Tests native ETM format (no namespace prefix)
+
+|`spec/fixtures/niso-jats/niso-jats-table-wrap.xml`
+|https://jats.nlm.nih.gov/options/OASIS/tag-library/19990315/element/oasis-table.html[NISO JATS Tag Library]
+|Tests ETM with standard OASIS namespace (`http://docs.oasis-open.org/ns/oasis-exchange/table`)
+
+|`spec/fixtures/isosts/isosts_tables.cals.{nn}.xml`
+|https://www.iso.org/schema/isosts/cals/test/isosts_tables.cals.xml[ISO ISOSTS Test Suite]
+|Tests ETM with alternative namespace URIs and CALS extensions
+|===
+
+=== Fixture Oddities
+
+The test fixtures contain elements and attributes that are not part of the
+Exchange Table Model specification but appear in real-world documents. The
+round-trip tests handle these as follows:
+
+Some fixtures contain elements from other namespaces that the model does not
+support. These are removed before parsing to focus on Exchange Table Model
+compatibility:
+
+.Foreign Elements (Removed Before Parsing)
+[cols="2,1"]
+|===
+|Element |Fixture
+
+|`+<xref>+` (NISO JATS cross-references)
+|`niso-jats-table-wrap.xml`
+
+|`+<para>+` (DocBook paragraph)
+|`docbook_example.xml`
+
+|`+<bold>+` (DocBook inline formatting)
+|`isosts_tables.cals.02.xml`
+|===
+
+The Exchange Table Model has evolved over time, resulting in multiple namespace
+URIs that refer to the same schema:
+
+.Namespace Variants
+[cols="2,1"]
+|===
+|Namespace URI |Used By
+
+|`http://docs.oasis-open.org/ns/oasis-exchange/table`
+|Canonical OASIS Exchange Table namespace
+
+|`urn:oasis:names:tc:xml:table`
+|ISO ISOSTS format
+
+|`-//OASIS//DTD XML Exchange Table Model 19990315//EN`
+|Legacy FPI (Formal Public Identifier) - used as namespace URI in older documents
+|===
+
+The model accepts all three namespace variants via `uri_aliases` for parsing.
+When serializing, the model uses the canonical namespace URI for output.
+
+The Exchange Table Model predates XML Schema and uses SGML-influenced attribute
+values:
+
+.Attribute Value Formats
+[cols="2,1"]
+|===
+|Values |Example
+
+|Integers (XML Schema)
+|`colsep="1" rowsep="1"`
+
+|Legacy strings (SGML)
+|`colsep="yes" rowsep="no"`
+|===
+
+The model accepts both integer (`0`, `1`) and string (`"yes"`, `"no"`) values
+for `colsep`, `rowsep`, and `pgwide` attributes to ensure backward
+compatibility with legacy documents.
+
+=== Why These Tests Matter
+
+Round-trip tests catch regressions that might otherwise go unnoticed:
+
+* A missing attribute mapping would cause data loss on serialization
+* An incorrect type coercion would change attribute values
+* Namespace handling bugs would produce invalid XML
+* Changes to element ordering could break downstream consumers
+
+By testing with real-world fixtures from established standards, we ensure compatibility with the broader XML table ecosystem.
 
 
 == Contributing
