@@ -1,7 +1,7 @@
 RSpec.describe Oasis::Etm::Tbody do
   let(:xml) do
     <<~XML
-      <tbody valign="top">
+      <tbody xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table" valign="top">
         <row>
           <entry>Cell 1</entry>
           <entry>Cell 2</entry>

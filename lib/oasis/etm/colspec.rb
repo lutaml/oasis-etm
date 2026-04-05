@@ -2,11 +2,14 @@ module Oasis
   module Etm
     class Colspec < Lutaml::Model::Serializable
       # Optional attributes
+      # colsep/rowsep accept both integer (0/1) and string ("yes"/"no") values.
+      # The string form "yes"/"no" is a legacy SGML representation supported for
+      # backward compatibility with older Exchange Table Model documents.
       attribute :colnum, :integer
       attribute :colname, :string
       attribute :colwidth, :string
-      attribute :colsep, :integer, values: [0, 1]
-      attribute :rowsep, :integer, values: [0, 1]
+      attribute :colsep, :string, values: %w[0 1 yes no]
+      attribute :rowsep, :string, values: %w[0 1 yes no]
       attribute :align, :string, values: %w[left right center justify char]
       attribute :char, :string
       attribute :charoff, :string

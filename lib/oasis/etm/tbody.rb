@@ -1,4 +1,3 @@
-
 module Oasis
   module Etm
     class Tbody < Lutaml::Model::Serializable

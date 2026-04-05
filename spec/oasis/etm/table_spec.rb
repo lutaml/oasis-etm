@@ -1,8 +1,8 @@
 RSpec.describe Oasis::Etm::Table do
   let(:xml) do
     <<~XML
-      <table frame="all" colsep="1" rowsep="1">
-        <title>Sample Table</title>
+      <table xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table" frame="all" colsep="1" rowsep="1">
+        <title xmlns="">Sample Table</title>
         <tgroup cols="3">
           <colspec colnum="1" colwidth="1*"/>
           <colspec colnum="2" colwidth="2*"/>
@@ -31,8 +31,8 @@ RSpec.describe Oasis::Etm::Table do
 
     it "parses table attributes" do
       expect(table.frame).to eq("all")
-      expect(table.colsep).to eq(1)
-      expect(table.rowsep).to eq(1)
+      expect(table.colsep).to eq("1")
+      expect(table.rowsep).to eq("1")
     end
 
     it "parses title" do

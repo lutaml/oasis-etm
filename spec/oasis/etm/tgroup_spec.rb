@@ -1,7 +1,7 @@
 RSpec.describe Oasis::Etm::Tgroup do
   let(:xml) do
     <<~XML
-      <tgroup cols="3" colsep="1" rowsep="1" align="center">
+      <tgroup xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table" cols="3" colsep="1" rowsep="1" align="center">
         <colspec colnum="1" colwidth="1*"/>
         <colspec colnum="2" colwidth="2*"/>
         <colspec colnum="3" colwidth="1*"/>
@@ -31,8 +31,8 @@ RSpec.describe Oasis::Etm::Tgroup do
     end
 
     it "parses optional attributes" do
-      expect(tgroup.colsep).to eq(1)
-      expect(tgroup.rowsep).to eq(1)
+      expect(tgroup.colsep).to eq("1")
+      expect(tgroup.rowsep).to eq("1")
       expect(tgroup.align).to eq("center")
     end
 

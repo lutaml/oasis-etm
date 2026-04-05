@@ -16,6 +16,5 @@ module Oasis
     autoload :Tgroup, "oasis/etm/tgroup"
     autoload :Thead, "oasis/etm/thead"
     autoload :VERSION, "oasis/etm/version"
-
   end
 end
