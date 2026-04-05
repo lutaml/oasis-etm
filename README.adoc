@@ -3,8 +3,8 @@
 :toclevels: 3
 
 image:https://img.shields.io/gem/v/oasis-etm.svg[Gem Version, link=https://rubygems.org/gems/oasis-etm]
-image:https://github.com/yourusername/oasis-etm/actions/workflows/test.yml/badge.svg[Build Status, link=https://github.com/yourusername/oasis-etm/actions/workflows/test.yml]
-image:https://img.shields.io/github/license/yourusername/oasis-etm.svg[License, link=https://github.com/yourusername/oasis-etm/blob/main/LICENSE]
+image:https://github.com/lutaml/oasis-etm/actions/workflows/test.yml/badge.svg[Build Status, link=https://github.com/lutaml/oasis-etm/actions/workflows/test.yml]
+image:https://img.shields.io/github/license/lutaml/oasis-etm.svg[License, link=https://github.com/lutaml/oasis-etm/blob/main/LICENSE]
 
 toc::[]
 
@@ -133,7 +133,7 @@ The OASIS ETM format follows this basic structure:
 
 The round-trip tests in `spec/oasis/etm_spec.rb` verify that XML files can be
 parsed into Ruby objects and then serialized back to XML without loss of
-semantic content. 
+semantic content.
 
 NOTE: These tests use the https://github.com/lutaml/canon[Canon gem] for XML
 comparison with the `spec_friendly` profile, which ignores non-semantic
