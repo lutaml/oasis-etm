@@ -17,7 +17,7 @@ module Oasis
       attribute :valign, :string, values: %w[top middle bottom]
 
       # Content
-      attribute :content, :string, raw: true
+      attribute :content, :string, raw: true, collection: true
 
       xml do
         element "entry"
