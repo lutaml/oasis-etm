@@ -30,6 +30,6 @@ Gem::Specification.new do |spec|
   end
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
 
-  spec.add_dependency "lutaml-model"
+  spec.add_dependency "lutaml-model", "~> 0.8.0"
   spec.metadata["rubygems_mfa_required"] = "true"
 end

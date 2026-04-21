@@ -21,7 +21,7 @@ RSpec.describe Oasis::Etm::Tbody do
     it "parses rows" do
       expect(tbody.rows.size).to eq(1)
       expect(tbody.rows.first.entries.size).to eq(3)
-      expect(tbody.rows.first.entries.first.content).to eq("Cell 1")
+      expect(tbody.rows.first.entries.first.content).to eq(["Cell 1"])
     end
   end
 

@@ -33,7 +33,7 @@ RSpec.describe Oasis::Etm::Entry do
     end
 
     it "parses content" do
-      expect(entry.content).to eq("Cell content")
+      expect(entry.content).to eq(["Cell content"])
     end
   end
 

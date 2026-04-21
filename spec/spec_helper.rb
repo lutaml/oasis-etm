@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "../lib/oasis-etm"
-require "nokogiri"
-require "canon"
 
 # Require all support files
 Dir[File.join(__dir__, "support", "**", "*.rb")].each do |f|
@@ -21,7 +19,13 @@ RSpec.configure do |config|
   end
 end
 
-require "lutaml/model"
+require "nokogiri"
 Lutaml::Model::Config.configure do |config|
   config.xml_adapter_type = :nokogiri
+end
+
+require "canon"
+Canon::Config.configure do |config|
+  config.xml.match.profile = :spec_friendly
+  config.xml.diff.use_color = true
 end
