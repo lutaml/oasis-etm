@@ -19,7 +19,8 @@ RSpec.describe Oasis::Etm::Row do
 
     it "parses entries" do
       expect(row.entries.size).to eq(3)
-      expect(row.entries.map(&:content)).to eq([["Cell 1"], ["Cell 2"], ["Cell 3"]])
+      expect(row.entries.map(&:content)).to eq([["Cell 1"], ["Cell 2"],
+                                                ["Cell 3"]])
     end
   end
 
