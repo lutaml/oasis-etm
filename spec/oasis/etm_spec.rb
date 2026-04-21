@@ -34,7 +34,7 @@ RSpec.describe Oasis::Etm do
               .gsub("<table", '<table xmlns="http://docs.oasis-open.org/ns/oasis-exchange/table"')
               .gsub("<title>", '<title xmlns="">')
 
-            expect(generated).to be_analogous_with(normalized_xml).with_profile(:spec_friendly)
+            expect(generated).to be_analogous_with(normalized_xml)
           end
         end
       end
@@ -69,8 +69,7 @@ RSpec.describe Oasis::Etm do
               encoding: "utf-8",
             )
 
-            # Use spec_friendly to ignore attribute order and formatting differences
-            expect(generated).to be_analogous_with(xml_content).with_profile(:spec_friendly)
+            expect(generated).to be_analogous_with(xml_content)
           end
         end
       end
@@ -101,8 +100,7 @@ RSpec.describe Oasis::Etm do
               encoding: "utf-8",
             )
 
-            # Use spec_friendly to ignore attribute order and formatting differences
-            expect(generated).to be_analogous_with(xml_content).with_profile(:spec_friendly)
+            expect(generated).to be_analogous_with(xml_content)
           end
         end
       end

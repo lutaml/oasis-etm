@@ -21,7 +21,7 @@ RSpec.describe Oasis::Etm::Thead do
     it "parses rows" do
       expect(thead.rows.size).to eq(1)
       expect(thead.rows.first.entries.size).to eq(3)
-      expect(thead.rows.first.entries.first.content).to eq("Header 1")
+      expect(thead.rows.first.entries.first.content).to eq(["Header 1"])
     end
   end
 
